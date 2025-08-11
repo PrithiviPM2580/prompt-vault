@@ -16,8 +16,7 @@ async function getGeminiTags(text) {
     const lines = rawText.split("\n");
     const tags = lines
       .filter((line) => line.trim().startsWith("*"))
-      .map((line) => line.replace(/^\*\s*/, "").trim()) // remove '* ' and trim
-      .map((tag) => tag.replace(/`/g, "")) // remove all backticks
+      .map((line) => line.replace(/^\*\s*/, "").trim())
       .map((tag) => tag.toLowerCase().replace(/\s+/g, "-"));
     return tags;
   } catch (error) {
