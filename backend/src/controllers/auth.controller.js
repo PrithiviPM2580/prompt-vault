@@ -84,8 +84,26 @@ async function logoutController(req, res) {
   return res.status(200).json({ message: "Logout successful" });
 }
 
+async function getUserController(req, res) {
+  if (!req.user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  try {
+    const user = await userModel
+      .findById(req.user._id)
+      .select("-password -__v");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({ user });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
 module.exports = {
   registerController,
   loginController,
   logoutController,
+  getUserController,
 };

@@ -8,7 +8,7 @@ const promptSchema = new mongoose.Schema(
       index: true,
     },
     text: {
-      type: String,
+      type: [String],
       required: true,
     },
     tags: {
