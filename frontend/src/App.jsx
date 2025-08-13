@@ -4,9 +4,9 @@ import MainRoutes from './routes/MainRoutes';
 
 const App = () => {
   return (
-    <>
+    <main className="app">
       <MainRoutes />
-    </>
+    </main>
   )
 }
 
