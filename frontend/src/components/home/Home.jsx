@@ -1,7 +1,9 @@
 import Section from "../section/Section";
 import "./style.css";
-import { cardData, workData } from "../../constants/index.js";
+import { cardData, explorData, workData } from "../../constants/index.js";
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 const Home = () => {
     return (
@@ -62,6 +64,9 @@ const Home = () => {
                                         <div className="dot"></div>
                                         <div className="dot"></div>
                                         <div className="dot"></div>
+                                        <div className="dot"></div>
+                                        <div className="dot"></div>
+                                        <div className="dot"></div>
                                     </div>
                                 )}
                             </Fragment>
@@ -69,6 +74,67 @@ const Home = () => {
                     </div>
                 </div>
             </Section>
+            <Section>
+                <div className="explore">
+                    <h1>Explore Example Prompts</h1>
+                    <div className="explore__cards">
+                        {explorData.map((explore, index) => (
+
+                            <div className="explore__card" key={index}>
+                                <div className="explore__data">
+                                    <div className="text">{explore.prompt}</div>
+                                    <button className="logo"><explore.icon /></button>
+                                </div>
+                                <div className="tags">
+                                    {explore.tags.map((tag, index) => (
+                                        <p className="tag" key={index}>{tag}</p>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Section>
+            <footer>
+                <div className="footer_list">
+                    <div className="logo_info">
+                        <div className="logo">
+                            <img src="/images/prompt-vault.png" alt="Logo Images" />
+                            <p>PromptVault</p>
+                        </div>
+                        <p>Your daily dose of creative prompts</p>
+                    </div>
+                    <div className="links">
+                        <p>Quick links</p>
+                        <ul className="link">
+                            <Link>Home</Link>
+                            <Link>Explore Prompts</Link>
+                            <Link>About</Link>
+                            <Link>Privacy Policy / Terms of Service</Link>
+                        </ul>
+                    </div>
+                    <div className="connect">
+                        <div className="text">
+                            <p>Connect</p>
+                        </div>
+                        <div className="link">
+                            <Link>
+                                <FaGithub className="icon" />
+                            </Link>
+                            <Link>
+                                <FaTwitter className="icon" />
+                            </Link>
+                            <Link>
+                                <FaLinkedin className="icon" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div className="footer_info">
+                    <p>© 2023 PromptVault. All rights reserved.</p>
+                </div>
+            </footer>
         </>
     );
 };
